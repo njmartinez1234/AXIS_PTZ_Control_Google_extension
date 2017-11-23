@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+ <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="knockout.js"></script>
+        <script type="text/javascript" src="ping.js"></script>
+        <script type="text/javascript" src="joystick.js"></script>
+        <script src="js/jquery4.js"></script>
+        <script src="js/jqui.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+        <!-- Latest compiled and minified CSS -->
+    <style>
+           /* #slidecontainer {
+                width: 250px;
+                height: 100%;
+            }*/
+
+            .slider {
+                -webkit-appearance: none;
+                width: 100%;
+                height: 25px;
+                background: #d3d3d3;
+                outline: none;
+                opacity: 0.7;
+                -webkit-transition: .8s;
+                transition: opacity .8s;
+            }
+
+            .slider:hover {
+                opacity: 1;
+            }
+
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 25px;
+                height: 25px;
+                background: #E0B804;
+                cursor: pointer;
+                content: 3;
+                color: black;
+            }
+
+            .slider::-moz-range-thumb {
+                width: 25px;
+                height: 25px;
+                background: #E0B804;
+                cursor: pointer;
+            }
+
+            input[type=text] {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              box-sizing: border-box;
+              border: 2px solid red;
+              border-radius: 0px;
+          }
+          input[type=button], input[type=submit], input[type=reset] {
+               border: 0;
+              border-radius: 0;
+              display: inline-block;
+              color: #000;
+              font-weight: bold;
+              height: auto;
+              width: 100%;
+              background: url(https://www.axis.com/sites/all/themes/axis_bootstrap_subtheme/images/yell_button.png) #fc3 no-repeat right bottom;
+              font-size: 14px;
+              line-height: 19px;
+              padding: 5px 35px 6px 15px;
+              margin-right: 5px;
+              margin-top: 5px;
+              text-align: center;
+              letter-spacing: .3px;
+        }
+
+       #wrapper {
+        }
+
+        #img_div1 #img_div2 {
+            display: inline-block;
+            width:32px;
+            height:32px;
+            transition: width 9s;
+        }
+       #wrapper #img_div2:hover  {
+            /*width: 36px;
+            height:36px;*/
+            cursor: pointer;
+        }
+        #wrapper #img_div1:hover  {
+           /* width: 36px;
+            height:36px;*/
+            cursor: pointer;
+        }
+        #div1m {
+            display: inline-block;
+            width:10px;
+            height:10px;
+        }
+        #img_frame{
+            cursor: pointer;
+            width: 100%; 
+            padding: 5px 5px 5px
+            border: 1px solid red;
+        }
+        #resizable { 
+          min-width: 238px; 
+          min-height: 150px; 
+          text-align: center;
+          border: 1px solid red;
+        }
+        .ui-resizable-helper { border: 1px dotted grey; }
+
+        .ui-widget-content{
+          left: 0px;
+        }
+
+        #joystick-settings {
+            display: none;
+        }
+
+        #keyboard-settings{
+          display: none;
+        }
+
+        br {
+        line-height: 20%;
+        }
+
+    </style>
+    </head>
+    <body>
+    <center><img src="img/logo.png" style="width:70px;height:30px;" align="center"></center>
+    <div id="wrapper" align="center">
+      <div id="div1m"></div>
+    </div>
+    <div id="slidecontainer">
+      <div id="wrapper" align="center">
+          <img src="img/cam_offline.png" height="32" width="32" id="img_div2">
+          <div id="div1m"></div>
+          <img src="img/joy_offline.png"  height="32" width="32"  id="img_div1">
+      </div>
+     <!--  <div id="gamepadPrompt"></div> -->
+      <br>
+      <div id="resizable" class="ui-widget-content">
+        <img src="" id="img_frame">
+        <font style="color: grey; font-size: 8px;">Drag to resize view</font>
+      </div>
+      <center><input type="text" id="camip" placeholder="Camera IP" align="center">
+      <br>
+      <input type="button" value="Connect to Camera" id="save_button"></center>
+      <br>
+      <div id="joystick-settings">      
+        <div>Movimiento Sensitivity</div>
+        <input type="range" min="1" max="100" class="slider" id="movementRange" step ="1">
+        <div>Movimiento Dead Zone</div>
+        <input type="range" min="0.1" max="1.0" class="slider" id="movemetDZRange" step ="0.1">
+        <div>Zoom Sensitivity</div>
+        <input type="range" min="1" max="100" class="slider" id="zoomRange" step ="1">
+        <div>Zoom Dead Zone</div>
+        <input type="range" min="0.1" max="1.0" class="slider" id="zoomDZRange" step ="0.1">
+      </div>
+      <div id="keyboard-settings">
+        <center><img src="img/keyboard.svg" height="80" width="240" align="center" id="keyboard-img"></center>
+        <div>Movimiento Sensitivity</div>
+        <input type="range" min="1" max="100" class="slider" id="movementRangeKB" step ="1">
+        <div>Zoom Sensitivity</div>
+        <input type="range" min="1" max="100" class="slider" id="zoomRangeKB" step ="1">
+      </div>
+    </div>
+  </body>
+</html>
